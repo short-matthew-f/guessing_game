@@ -1,0 +1,8 @@
+<h1>Edit Page</h1>
+
+<%= form_for @player do |player| %>
+  <%= player.label :email, "Your email" %>
+  <%= player.text_field :email, value: @player.email %>
+
+  <%= player.submit "DO YOU _STILL_ WANT TO PLAY A GAME?" %>
+<% end %>

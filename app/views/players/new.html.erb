@@ -1,0 +1,11 @@
+<h1>New Page</h1>
+
+<%= form_for @player do |player| %>
+  <%= player.label :email, "Your email" %>
+  <%= player.text_field :email, value: @player.email %>
+
+  <%= player.label :password, "Your password" %>
+  <%= player.password_field :password, value: @player.password %>
+
+  <%= player.submit "DO YOU WANT TO PLAY A GAME?" %>
+<% end %>

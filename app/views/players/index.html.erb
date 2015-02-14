@@ -1,0 +1,12 @@
+<h1>Your players are...</h1>
+
+<% @players.each do |player| %>
+  <p>
+    <%= link_to(player.email, player_url(player)) %>
+    <%= button_to "Remove Player", { controller: :players, action: :destroy, id: player.id }, method: :delete %>
+  </p>
+<% end %>
+
+<hr>
+
+<%= link_to "Add a player", new_player_url %>
