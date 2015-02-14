@@ -5,6 +5,12 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+
+    @games = @player.games.order(created_at: :desc).group_by do |game|
+      game.won
+    end
+
+    @last_game = @player.games.order(:created_at).last
   end
 
   def new

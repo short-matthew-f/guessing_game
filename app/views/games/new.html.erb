@@ -1,0 +1,8 @@
+<h1>Welcome, <%= @player.email %>, do you want to play a game?</h1>
+
+<%= form_for @game, url: player_games_url do |game| %>
+  <%= game.label :guess %>
+  <%= game.select :guess, Game.colors %>
+
+  <%= game.submit "I've made my choice!" %>
+<% end %>

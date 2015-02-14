@@ -1,5 +1,21 @@
 <h1><%= @player.email %> ☠<%= link_to("edit", edit_player_url(@player)) %>☠</h1>
 
+<h2>Your Games (<%= link_to("Play another", new_player_game_url(@player)) %>)</h2>
+
+<h3>You've won <%= winning_percent(@player).round(1) %>% of the time.</h3>
+
+<% @games.each do |won, game_list| %>
+  <p class="<%= won ? "winning-game" : "losing-game" %>">
+    <% game_list.each do |game| %>
+      <% if game.id == @last_game.id %>
+        <span class="last-game">➳ <%= game %>, at <%= game.created_at.strftime("%T") %> <br/></span>
+      <% else %>
+        <%= game %>, at <%= game.created_at.strftime("%T") %> <br/>
+      <% end %>
+    <% end %>
+  </p>
+<% end %>
+
 <hr>
 
 <%= link_to "All Players who Haven't Expired", players_url %>
